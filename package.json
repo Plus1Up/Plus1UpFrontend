@@ -9,7 +9,8 @@
     "build:prod": "./node_modules/.bin/webpack --config config/webpack.config.prod.js",
     "build:dev": "./node_modules/.bin/webpack --config config/webpack.config.dev.js",
     "server:prod": "node server.prod.js",
-    "postinstall": "npm run build:prod"
+    "postinstall": "npm run build:prod",
+    "start": "npm run server:prod"
   },
   "author": "",
   "license": "ISC",
