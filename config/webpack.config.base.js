@@ -15,15 +15,15 @@ module.exports = {
       'node_modules',
     ],
     alias: {
-      assets: path.resolve(appPath, 'assets'),
-      config: path.resolve(appPath, 'config'),
-      components: path.resolve(appPath, 'components'),
-      constants: path.resolve(appPath, 'constants'),
-      containers: path.resolve(appPath, 'containers'),
-      services: path.resolve(appPath, 'services'),
-      utils: path.resolve(appPath, 'utils'),
-      actions: path.resolve(appPath, 'actions'),
-      reducers: path.resolve(appPath, 'reducers'),
+      assets: path.resolve(appPath, 'assets'), // pojemnik na obiekty(np. obrazki, fonty) wykorzystywane na stronie
+      config: path.resolve(appPath, 'config'), // pliki konfiguracyjne dla wykorzystanych bibliotek
+      components: path.resolve(appPath, 'components'), // zbiór głupich komponentów odpowiadających za wyswietlanie treści
+      constants: path.resolve(appPath, 'constants'), // stale wykorzystywane w obrebie calego projektu, np. akcje z reduxa
+      containers: path.resolve(appPath, 'containers'), // mądre komponenty odpowiadające za logike aplikacji
+      services: path.resolve(appPath, 'services'), // pliki komunikujące się z serwisami zewnętrznymi (np. poprzez API)
+      utilities: path.resolve(appPath, 'utilities'), // funkcje pomocnicze
+      actions: path.resolve(appPath, 'actions'), // akcje reduxowe
+      reducers: path.resolve(appPath, 'reducers'), // reducery reduxowe
     },
     extensions: ['.js', '.png'],
   },

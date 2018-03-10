@@ -1,11 +1,18 @@
 import React from 'react';
 
-import './styles.css';
+import Layout from 'components/Layout';
+import Body from 'components/Body';
+import Sidebar from 'components/Sidebar';
 
 const App = (props) => (
-	<div className="main__container">
-    Hello world!
-	</div>
+  <Layout
+    sidebar={
+      <Sidebar />
+    }
+    body={
+      <Body />
+    }
+  />
 );
 
 export default App;
