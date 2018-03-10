@@ -1,5 +1,5 @@
 {
-  "name": "one-plus-up",
+  "name": "plus-one-up",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -29,7 +29,7 @@
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "sass-loader": "^6.0.7",
+    "sanitize.css": "^5.0.0",
     "url-loader": "^1.0.1",
     "webpack": "^3.10.0",
     "webpack-merge": "^4.1.2"

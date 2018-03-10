@@ -1,3 +1,5 @@
+// konfiguracja Webpack
+
 const path = require("path");
 const webpack = require("webpack");
 const cleanWebpackPlugin = require("clean-webpack-plugin");
@@ -26,7 +28,7 @@ module.exports = {
     extensions: ['.js', '.png'],
   },
   entry: {
-    app: path.join(appPath, 'app.js'),
+    app: path.join(appPath, 'index.js'),
   },
   output: {
     path: path.join(appPath, '..', 'public'),
@@ -43,7 +45,7 @@ module.exports = {
     ),
     new extractTextWebpackPlugin('[name]-[hash:8].css'),
     new htmlWebpackPlugin({
-      template: path.join(appPath, 'app.html'),
+      template: path.join(appPath, 'index.html'),
       inject: true,
     }),
   ],

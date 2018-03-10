@@ -1,8 +1,10 @@
 import React from 'react';
 
+import './styles.css';
+
 const App = (props) => (
-	<div>
-    dupson
+	<div className="main__container">
+    Hello world!
 	</div>
 );
 
