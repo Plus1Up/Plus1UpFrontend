@@ -24,6 +24,7 @@ module.exports = {
       utilities: path.resolve(appPath, 'utilities'), // funkcje pomocnicze
       actions: path.resolve(appPath, 'actions'), // akcje reduxowe
       reducers: path.resolve(appPath, 'reducers'), // reducery reduxowe
+      views: path.resolve(appPath, 'views'),
     },
     extensions: ['.js', '.png'],
   },

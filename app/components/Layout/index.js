@@ -5,7 +5,7 @@ import './styles.css';
 const Layout = (props) => (
   <div className="main_containter">
     {props.sidebar}
-    {props.body}
+    {props.views}
   </div>
 );
 

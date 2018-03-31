@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Router, Switch, Route } from 'react-router-dom';
+import History from 'services/history';
 
-import Layout from 'components/Layout';
-import Body from 'components/Body';
-import Sidebar from 'components/Sidebar';
+import AdminLayout from 'views/Admin/Layout';
+import DefaultLayout from 'views/Default/Layout';
 
-const App = (props) => (
-  <Layout
-    sidebar={
-      <Sidebar />
-    }
-    body={
-      <Body />
-    }
-  />
-);
+class App extends Component {
+  render() {
+    return (
+      <Router history={History}>
+        <Switch>
+          <Route path="/admin" component={AdminLayout} />
+          <Route path="/" component={DefaultLayout} exact />
+        </Switch>
+      </Router>
+    )
+  }
+}
 
 export default App;
