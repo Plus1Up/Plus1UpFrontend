@@ -1,0 +1,11 @@
+.navigation_container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  text-align: center;
+  width: 280px;
+  min-height: 100px;
+  margin-left: 10px; ;
+  position: absolute;
+}

@@ -4,11 +4,9 @@ import { Switch, Route } from 'react-router-dom';
 import Page from 'components/Page';
 
 const Views = (props) => (
-  <Page>
-    <div>
-      Main page
-    </div>
-  </Page>
+  <div>
+    Main page
+  </div>
 );
 
 export default Views;

@@ -4,6 +4,7 @@ import History from 'services/history';
 
 import AdminLayout from 'views/Admin/Layout';
 import DefaultLayout from 'views/Default/Layout';
+import CoachLayout from 'views/Coach/Layout';
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
       <Router history={History}>
         <Switch>
           <Route path="/admin" component={AdminLayout} />
+          <Route path="/coach" component={CoachLayout} />
           <Route path="/" component={DefaultLayout} exact />
         </Switch>
       </Router>
