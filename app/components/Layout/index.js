@@ -3,9 +3,8 @@ import React from 'react';
 import './styles.css';
 
 const Layout = (props) => (
-  <div className="main_containter">
+  <div className="main-container">
     {props.sidebar}
-    {props.navigation}
     {props.views}
   </div>
 );

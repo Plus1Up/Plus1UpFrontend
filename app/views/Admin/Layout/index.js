@@ -15,8 +15,7 @@ class AdminLayout extends Component {
   render() {
     return (
       <Layout
-        sidebar= { <Sidebar /> }
-        navigation={ <Navigation role = 'admin' /> }
+        sidebar= { <Sidebar role='admin' /> }
         views={ <Views /> }
       />
     )  

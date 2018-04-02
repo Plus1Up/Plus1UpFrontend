@@ -15,8 +15,7 @@ class CoachLayout extends Component {
   render() {
     return (
       <Layout
-        sidebar= { <Sidebar /> }
-        navigation={ <Navigation role = 'coach' /> }
+        sidebar= { <Sidebar role='coach' /> }
         views={ <Views /> }
       />
     )  
