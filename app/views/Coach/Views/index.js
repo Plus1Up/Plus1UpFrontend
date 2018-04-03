@@ -3,14 +3,16 @@ import { Switch, Route } from 'react-router-dom';
 
 // Views
 import MainPage from 'views/Coach/MainPage';
-import ClientList from 'views/Coach/ClientList';
+import Clients from 'views/Coach/Clients';
+import ClientAdd from 'views/Coach/Clients/ClientAdd';
 import ExerciseList from 'views/Coach/ExerciseList';
 
 const Views = (props) => {
   return (
     <Switch>
       <Route exact path ='/coach' component={MainPage} />
-      <Route path='/coach/clients' component={ClientList} />
+      <Route path='/coach/clients/add_client' component={ClientAdd} />
+      <Route path='/coach/clients' component={Clients} />
       <Route path='/coach/exercises' component={ExerciseList} />
     </Switch>
   )
