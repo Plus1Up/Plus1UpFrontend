@@ -14,7 +14,6 @@ class DefaultLayout extends Component {
   render() {
     return (
       <Layout
-        sidebar={ <Sidebar /> }
         views={ <Views /> }
       />
     )

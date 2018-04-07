@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 
 import Layout from 'components/Layout';
 import Sidebar from 'components/Sidebar';
-import Views from 'views/Admin/Views';
-import Navigation from 'components/Navigation'
+import Views from 'views/Coach/Views';
+import Navigation from 'components/Navigation';
 
-class AdminLayout extends Component {
+class CoachLayout extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,11 +15,11 @@ class AdminLayout extends Component {
   render() {
     return (
       <Layout
-        sidebar= { <Sidebar role='admin' /> }
+        sidebar= { <Sidebar role='coach' /> }
         views={ <Views /> }
       />
     )  
   }
 }
 
-export default AdminLayout;
+export default CoachLayout;

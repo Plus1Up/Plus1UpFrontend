@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
 import './index.css';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -7,6 +8,8 @@ import ActionAssignment from 'material-ui/svg-icons/action/assignment';
 import ActionPower from 'material-ui/svg-icons/action/power-settings-new';
 
 import Page from 'components/Page';
+import Navigation from 'components/Navigation';
+
 
 class MainPage extends Component {
 
@@ -14,8 +17,8 @@ class MainPage extends Component {
     return (
       <div>
         <Page>
-            Admin
-        </Page>
+          Coach
+        </Page> 
       </div>
     )
   }
