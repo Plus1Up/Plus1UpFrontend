@@ -1,0 +1,15 @@
+h1, h2 {
+    margin-top:10px;
+    font-family: Calibri;
+	font-size: 38px;
+    font-weight: bold;
+    color: #555;
+    line-height: 50px;
+}
+
+body {
+    font-family: Calibri;
+}
+
+#inline1 {display:inline-block;margin-right:50px;} 
+#inline2 {display:inline-block;} 
