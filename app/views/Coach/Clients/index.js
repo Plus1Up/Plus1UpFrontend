@@ -4,6 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
+import FlatButton from 'material-ui/FlatButton';
 import Subheader from 'material-ui/Subheader';
 import InfoIcon from 'material-ui-icons/Info';
 
@@ -19,7 +20,7 @@ const styles = {
   },
   gridList: {
     width: 'auto',
-    height: 450,
+    height: 'auto',
     overflowY: 'auto',
   },
 };
@@ -29,17 +30,39 @@ class Clients extends Component {
     super(props);
 
     this.state = {
-      clientsList: [],
+      activeClientsList: [],
+      pendingClientsList: [],
+      blockedClientsList: [],
     };
   }
 
   componentDidMount() {
     axios
-      .get('/clients')
+      .get('/clients?is_active=true')
       .then(response => {
         console.log(response);
         this.setState({
-          clientsList: response.data.data,
+          activeClientsList: response.data.data,
+        })
+      })
+      .catch(error =>
+        console.log("error",error)),
+    axios
+      .get('/clients?is_pending=true')
+      .then(response => {
+        console.log(response);
+        this.setState({
+          pendingClientsList: response.data.data,
+        })
+      })
+      .catch(error =>
+        console.log("error",error)),
+    axios
+      .get('/clients?is_active=false')
+      .then(response => {
+        console.log(response);
+        this.setState({
+          blockedClientsList: response.data.data,
         })
       })
       .catch(error =>
@@ -62,11 +85,11 @@ class Clients extends Component {
             <Tab label="Aktywni" >
             <div style={styles.root}>
               <GridList
-                cellHeight={180}
+                cellHeight={350}
                 style={styles.gridList}
               >
-                <Subheader>Wszyscy klienci</Subheader>
-                {this.state.clientsList.map((tile) => (
+                <Subheader>Aktywni klienci</Subheader>
+                {this.state.activeClientsList.map((tile) => (
                   <GridTile
                     key={tile.id}
                     title={<span>{tile.name} {tile.last_name}</span>}
@@ -80,18 +103,44 @@ class Clients extends Component {
             </div>
             </Tab>
             <Tab label="Oczekujący" >
-              <div>
-                <p>
-                TODO
-                </p>
-              </div>
+            <div style={styles.root}>
+              <GridList
+                cellHeight={350}
+                style={styles.gridList}
+              >
+                <Subheader>Oczekujący klienci</Subheader>
+                {this.state.pendingClientsList.map((tile) => (
+                  <GridTile
+                    key={tile.id}
+                    title={<span>{tile.name} {tile.last_name}</span>}
+                    actionIcon={<FlatButton label="Anuluj zaproszenie" fullWidth={true} />}
+                  >
+                    <img src='../../../assets/images/avatar.png' />
+                  </GridTile>
+                ))}
+              </GridList>
+            </div>
             </Tab>
             <Tab label="Zablokowani" >
-              <div>
-                <p>
-                  TODO
-                </p>
-              </div>
+            <div style={styles.root}>
+              <GridList
+                cellHeight={350}
+                style={styles.gridList}
+              >
+                <Subheader>Zablokowani klienci</Subheader>
+                {this.state.blockedClientsList.map((tile) => (
+                  <GridTile
+                    key={tile.id}
+                    title={<span>{tile.name} {tile.last_name}</span>}
+                    //todo - data zablokowania
+                    subtitle={<span>zablokowany: <b>{tile.updated_at}</b></span>}
+                    actionIcon={<IconButton><InfoIcon /></IconButton>}
+                  >
+                    <img src='../../../assets/images/avatar.png' />
+                  </GridTile>
+                ))}
+              </GridList>
+            </div>
             </Tab>
           </Tabs>
       </Page>
