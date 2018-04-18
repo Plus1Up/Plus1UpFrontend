@@ -14,9 +14,7 @@ class MainPage extends Component {
     return (
       <div>
         <Page>
-          <div>
             Admin
-          </div>
         </Page>
       </div>
     )

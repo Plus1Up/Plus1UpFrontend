@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -58,38 +58,34 @@ const navigations = {
 
 const Navigation = (props) => {
   return (
-    <div className="navigation_container">
-      <MuiThemeProvider>
-        <div>
-          {navigations[props.role].map((element) => (
-            <Fragment key={element.key}>
-              {element.url ? 
-                <NavLink to={element.url}>
-                  <RaisedButton
-                    label={element.name}
-                    labelPosition="before"
-                    icon={<SocialGroup />}
-                    className="m-btn"
-                    fullWidth={true}
-                    backgroundColor="#E53935"
-                    labelColor="#FFFFFF"
-                  />
-                </NavLink> : 
+    <div className="navigation-wrapper">
+      {navigations[props.role].map((element) => (
+        <div key={element.key} className="navigation-item">
+          <MuiThemeProvider>
+            {element.url ? 
+              <NavLink to={element.url}>
                 <RaisedButton
                   label={element.name}
                   labelPosition="before"
                   icon={<SocialGroup />}
-                  className="m-btn"
                   fullWidth={true}
                   backgroundColor="#E53935"
                   labelColor="#FFFFFF"
-                  onClick={element.method}
                 />
-              }
-            </Fragment>
-          ))}
+              </NavLink> : 
+              <RaisedButton
+                label={element.name}
+                labelPosition="before"
+                icon={<SocialGroup />}
+                fullWidth={true}
+                backgroundColor="#E53935"
+                labelColor="#FFFFFF"
+                onClick={element.method}
+              />
+            }
+        </MuiThemeProvider>
         </div>
-      </MuiThemeProvider>
+      ))}
     </div>
   );
 }

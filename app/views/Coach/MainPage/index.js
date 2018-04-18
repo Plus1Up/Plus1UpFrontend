@@ -16,11 +16,8 @@ class MainPage extends Component {
   render() {
     return (
       <div>
-        <Navigation />
         <Page>
-          <div>
-            Coach
-          </div>
+          Coach
         </Page> 
       </div>
     )

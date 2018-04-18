@@ -1,11 +1,11 @@
-.navigation_container {
+.navigation-wrapper {
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  text-align: center;
   width: 280px;
-  min-height: 100px;
-  margin-left: 10px; ;
-  position: absolute;
+  flex-direction: column;
+  margin-left: 10px;
+  padding-top: 5px;
+}
+
+.navigation-item {
+  margin-bottom: 5px;
 }
