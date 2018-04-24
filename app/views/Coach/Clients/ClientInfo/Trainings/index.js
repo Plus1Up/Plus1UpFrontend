@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn, DropDownMenu, MenuItem} from 'material-ui';
 import {Link} from 'react-router-dom';
+import { trainings } from 'services/api';
 import './styles.css';
 
 import Page from 'components/Page';
@@ -10,10 +11,23 @@ class Trainings extends Component {
     super(props);
 
     this.state = {
+      data: [],
+      error: '',
     };
   }
 
   componentDidMount() {
+      trainings.all(this.clientId)
+        .then(response => {
+          this.setState({
+            ...this.state,
+            data: response.data.data
+          });
+        })
+  }
+
+  get clientId() {
+    return this.props.id;
   }
 
   render() {
@@ -23,7 +37,6 @@ class Trainings extends Component {
           <Table displaySelectAll={false} selectable={false}>
             <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
               <TableRow>
-                <TableHeaderColumn>Nr tygodnia</TableHeaderColumn>
                 <TableHeaderColumn>Poniedziałek</TableHeaderColumn>
                 <TableHeaderColumn>Wtorek</TableHeaderColumn>
                 <TableHeaderColumn>Środa</TableHeaderColumn>
@@ -34,16 +47,41 @@ class Trainings extends Component {
               </TableRow>
             </TableHeader>
             <TableBody displayRowCheckbox={false}>
-              <TableRow hoverable={true}>
-                <TableRowColumn>16</TableRowColumn>
-                <TableRowColumn>FBW</TableRowColumn>
-                <TableRowColumn>Cardio</TableRowColumn>
-                <TableRowColumn>FBW</TableRowColumn>
-                <TableRowColumn>Cardio</TableRowColumn>
-                <TableRowColumn>FBW</TableRowColumn>
-                <TableRowColumn>Bieg</TableRowColumn>
-                <TableRowColumn>Bieg</TableRowColumn>
-              </TableRow>
+            {
+              this.state.data
+              .map(training =>
+                <TableRow key={training.id} hoverable={true}>
+                  {(training.weekday == 1 ? 
+                    (<TableRowColumn>{training.name}</TableRowColumn>) 
+                    : (<TableRowColumn/>)
+                  )}
+                  {(training.weekday == 2 ? 
+                    (<TableRowColumn>{training.name}</TableRowColumn>) 
+                    : (<TableRowColumn/>)
+                  )}
+                  {(training.weekday == 3 ? 
+                    (<TableRowColumn>{training.name}</TableRowColumn>) 
+                    : (<TableRowColumn/>)
+                  )}
+                  {(training.weekday == 4 ? 
+                    (<TableRowColumn>{training.name}</TableRowColumn>) 
+                    : (<TableRowColumn/>)
+                  )}
+                  {(training.weekday == 5 ? 
+                    (<TableRowColumn>{training.name}</TableRowColumn>) 
+                    : (<TableRowColumn/>)
+                  )}
+                  {(training.weekday == 6 ? 
+                    (<TableRowColumn>{training.name}</TableRowColumn>) 
+                    : (<TableRowColumn/>)
+                  )}
+                  {(training.weekday == 7 ? 
+                    (<TableRowColumn>{training.name}</TableRowColumn>) 
+                    : (<TableRowColumn/>)
+                  )}
+                  </TableRow>
+              )
+            }
             </TableBody>
           </Table>
         </div>
