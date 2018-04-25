@@ -109,13 +109,13 @@ class ClientInfo extends Component {
               className='tabstabs'
               inkBarStyle={{backgroundColor: '#ffffff'}} >
               <Tab label='Odbyte treningi' value='a' style={styles.tabtab}>
-                <DoneTraining />
+                <DoneTraining id={this.clientId} />
               </Tab>
               <Tab label='Treningi' value='b' style={styles.tabtab} >
-                <Trainings />
+                <Trainings id={this.clientId} />
               </Tab>
               <Tab label='Dieta' value='c' style={styles.tabtab} >
-                <Diet />
+                <Diet id={this.clientId} />
               </Tab>
               <Tab label='Ustawienia' value='d' style={styles.tabtab} >
 
