@@ -27,13 +27,13 @@ class Trainings extends Component {
         .then(response => {
           this.setState({
             ...this.state,
-            mondays: response.data.data.filter(day => day.weekday == 0),
-            tuesdays: response.data.data.filter(day => day.weekday == 1),
-            wednesdays: response.data.data.filter(day => day.weekday == 2),
-            thursdays: response.data.data.filter(day => day.weekday == 3),
-            fridays: response.data.data.filter(day => day.weekday == 4),
-            saturdays: response.data.data.filter(day => day.weekday == 5),
-            sundays: response.data.data.filter(day => day.weekday == 6),
+            mondays: response.data.data.filter((day) => day.weekday === 0),
+            tuesdays: response.data.data.filter((day) => day.weekday === 1),
+            wednesdays: response.data.data.filter((day) => day.weekday === 2),
+            thursdays: response.data.data.filter((day) => day.weekday === 3),
+            fridays: response.data.data.filter((day) => day.weekday === 4),
+            saturdays: response.data.data.filter((day) => day.weekday === 5),
+            sundays: response.data.data.filter((day) => day.weekday === 6),
           });
         })
   }
