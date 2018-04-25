@@ -13,16 +13,16 @@ export const clients = {
 };
 
 export const trainings = {
-  new: (client_id, data) => (
-    axios.post(`/clients/${client_id}/trainings`, data)
+  new: (clientId, data) => (
+    axios.post(`/clients/${clientId}/trainings`, data)
   ),
-  all: (client_id) => (
-    axios.get(`/clients/${client_id}/trainings`)
+  all: (clientId) => (
+    axios.get(`/clients/${clientId}/trainings`)
   ),
-  get: (client_id, id) => (
-    axios.get(`/clients/${client_id}/trainings/${id}`)
+  get: (clientId, id) => (
+    axios.get(`/clients/${clientId}/trainings/${id}`)
   ),
-  put: (client_id, id, data) => (
-    axios.put(`/clients/${client_id}/trainings/${id}`, data)
+  put: (clientId, id, data) => (
+    axios.put(`/clients/${clientId}/trainings/${id}`, data)
   ),
 };
