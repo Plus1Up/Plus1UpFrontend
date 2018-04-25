@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
-import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn, DropDownMenu, MenuItem} from 'material-ui';
-import {Link} from 'react-router-dom';
-import { trainings } from 'services/api';
-import './styles.css';
+import React, {Component} from "react";
+import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn, DropDownMenu, MenuItem} from "material-ui";
+import {Link} from "react-router-dom";
+import { trainings } from "services/api";
+import "./styles.css";
 
-import Page from 'components/Page';
+import Page from "components/Page";
 
 class Trainings extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class Trainings extends Component {
       fridays: [],
       saturdays: [],
       sundays: [],
-      error: '',
+      error: "",
     };
   }
 
