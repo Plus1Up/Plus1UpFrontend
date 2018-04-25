@@ -11,7 +11,13 @@ class Trainings extends Component {
     super(props);
 
     this.state = {
-      data: [],
+      mondays: [],
+      tuesdays: [],
+      wednesdays: [],
+      thursdays: [],
+      fridays: [],
+      saturdays: [],
+      sundays: [],
       error: '',
     };
   }
@@ -21,7 +27,13 @@ class Trainings extends Component {
         .then(response => {
           this.setState({
             ...this.state,
-            data: response.data.data
+            mondays: response.data.data.filter(day => day.weekday == 0),
+            tuesdays: response.data.data.filter(day => day.weekday == 1),
+            wednesdays: response.data.data.filter(day => day.weekday == 2),
+            thursdays: response.data.data.filter(day => day.weekday == 3),
+            fridays: response.data.data.filter(day => day.weekday == 4),
+            saturdays: response.data.data.filter(day => day.weekday == 5),
+            sundays: response.data.data.filter(day => day.weekday == 6),
           });
         })
   }
@@ -47,41 +59,64 @@ class Trainings extends Component {
               </TableRow>
             </TableHeader>
             <TableBody displayRowCheckbox={false}>
-            {
-              this.state.data
-              .map(training =>
-                <TableRow key={training.id} hoverable={true}>
-                  {(training.weekday == 1 ? 
-                    (<TableRowColumn>{training.name}</TableRowColumn>) 
-                    : (<TableRowColumn/>)
-                  )}
-                  {(training.weekday == 2 ? 
-                    (<TableRowColumn>{training.name}</TableRowColumn>) 
-                    : (<TableRowColumn/>)
-                  )}
-                  {(training.weekday == 3 ? 
-                    (<TableRowColumn>{training.name}</TableRowColumn>) 
-                    : (<TableRowColumn/>)
-                  )}
-                  {(training.weekday == 4 ? 
-                    (<TableRowColumn>{training.name}</TableRowColumn>) 
-                    : (<TableRowColumn/>)
-                  )}
-                  {(training.weekday == 5 ? 
-                    (<TableRowColumn>{training.name}</TableRowColumn>) 
-                    : (<TableRowColumn/>)
-                  )}
-                  {(training.weekday == 6 ? 
-                    (<TableRowColumn>{training.name}</TableRowColumn>) 
-                    : (<TableRowColumn/>)
-                  )}
-                  {(training.weekday == 7 ? 
-                    (<TableRowColumn>{training.name}</TableRowColumn>) 
-                    : (<TableRowColumn/>)
-                  )}
-                  </TableRow>
-              )
-            }
+              <TableRow hoverable={true}>
+                <TableRowColumn>
+                {
+                  this.state.mondays
+                  .map(training => 
+                    <p>{training.name}</p>
+                  )
+                }
+                </TableRowColumn>
+                <TableRowColumn>
+                {
+                  this.state.tuesdays
+                  .map(training => 
+                    <p>{training.name}</p>
+                  )
+                }
+                </TableRowColumn>
+                <TableRowColumn>
+                {
+                  this.state.wednesdays
+                  .map(training => 
+                    <p>{training.name}</p>
+                  )
+                }
+                </TableRowColumn>
+                <TableRowColumn>
+                {
+                  this.state.thursdays
+                  .map(training => 
+                    <p>{training.name}</p>
+                  )
+                }
+                </TableRowColumn>
+                <TableRowColumn>
+                {
+                  this.state.fridays
+                  .map(training => 
+                    <p>{training.name}</p>
+                  )
+                }
+                </TableRowColumn>
+                <TableRowColumn>
+                {
+                  this.state.saturdays
+                  .map(training => 
+                    <p>{training.name}</p>
+                  )
+                }
+                </TableRowColumn>
+                <TableRowColumn>
+                {
+                  this.state.sundays
+                  .map(training => 
+                    <p>{training.name}</p>
+                  )
+                }
+                </TableRowColumn>
+              </TableRow>
             </TableBody>
           </Table>
         </div>
