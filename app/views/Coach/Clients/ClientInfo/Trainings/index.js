@@ -24,7 +24,7 @@ class Trainings extends Component {
 
   componentDidMount() {
       trainings.all(this.clientId)
-        .then(response => {
+        .then((response) => {
           this.setState({
             ...this.state,
             mondays: response.data.data.filter((day) => day.weekday === 0),
@@ -35,7 +35,7 @@ class Trainings extends Component {
             saturdays: response.data.data.filter((day) => day.weekday === 5),
             sundays: response.data.data.filter((day) => day.weekday === 6),
           });
-        })
+        });
   }
 
   get clientId() {
@@ -63,7 +63,7 @@ class Trainings extends Component {
                 <TableRowColumn>
                 {
                   this.state.mondays
-                  .map(training => 
+                  .map((training) => 
                     <p>{training.name}</p>
                   )
                 }
@@ -71,7 +71,7 @@ class Trainings extends Component {
                 <TableRowColumn>
                 {
                   this.state.tuesdays
-                  .map(training => 
+                  .map((training) => 
                     <p>{training.name}</p>
                   )
                 }
@@ -79,7 +79,7 @@ class Trainings extends Component {
                 <TableRowColumn>
                 {
                   this.state.wednesdays
-                  .map(training => 
+                  .map((training) => 
                     <p>{training.name}</p>
                   )
                 }
@@ -87,7 +87,7 @@ class Trainings extends Component {
                 <TableRowColumn>
                 {
                   this.state.thursdays
-                  .map(training => 
+                  .map((training) => 
                     <p>{training.name}</p>
                   )
                 }
@@ -95,7 +95,7 @@ class Trainings extends Component {
                 <TableRowColumn>
                 {
                   this.state.fridays
-                  .map(training => 
+                  .map((training) => 
                     <p>{training.name}</p>
                   )
                 }
@@ -103,7 +103,7 @@ class Trainings extends Component {
                 <TableRowColumn>
                 {
                   this.state.saturdays
-                  .map(training => 
+                  .map((training) => 
                     <p>{training.name}</p>
                   )
                 }
@@ -111,7 +111,7 @@ class Trainings extends Component {
                 <TableRowColumn>
                 {
                   this.state.sundays
-                  .map(training => 
+                  .map((training) => 
                     <p>{training.name}</p>
                   )
                 }
