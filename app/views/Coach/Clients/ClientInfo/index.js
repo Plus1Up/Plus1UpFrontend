@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { clients } from 'services/api';
 import {Tab, Tabs} from 'material-ui/Tabs';
-import { RaisedButton } from 'material-ui';
+import { RaisedButton, FlatButton, Dialog } from "material-ui";
+import {Link} from "react-router-dom";
 import './styles.css';
 
 import Page from 'components/Page';
 import DoneTraining from 'views/Coach/Clients/ClientInfo/DoneTraining';
 import Trainings from 'views/Coach/Clients/ClientInfo/Trainings';
 import Diet from 'views/Coach/Clients/ClientInfo/Diet';
-
+import avatarImg from "assets/images/avatar.png";
 
 const styles = {
   button: {
@@ -17,7 +18,14 @@ const styles = {
     minWidth: 170,
   },
   tabtab: {
-    backgroundColor: '#E53935',
+    backgroundColor: "#E53935",
+  },
+  dialog: {
+    width: 500,
+    maxWidth: "none",
+  },
+  flatbtn: {
+    color: "#000000"
   },
 };
 
@@ -38,9 +46,18 @@ class ClientInfo extends Component {
         'created_at':'',
         'updated_at':''
       },
+      open: false,
       error: '',
     };
   }
+
+  handleOpen = () => {
+    this.setState({open: true});
+  };
+
+  handleClose = () => {
+    this.setState({open: false});
+  };
 
   componentDidMount() {
     if(this.clientId) {
@@ -54,51 +71,80 @@ class ClientInfo extends Component {
       }
   }
 
-  onHandleClickT = () => {
-    clients.put(this.clientId, {
-      is_active: 'true'
-    })
-    .then((response) => {
-      console.log(response);
-    })
-    .catch(error => {
-      console.log(error);
-    });
-  }
-
-  onHandleClickF = () => {
-    clients.put(this.clientId, {
-      is_active: 'false'
-    })
+  onHandleClick = () => {
+    if (!this.state.data.is_active) {
+      clients.put(this.clientId, {
+        is_active: 'true'
+      }).then(() => {
+        this.props.history.push("/coach/clients");
+      })
+    } else {
+      clients.put(this.clientId, {
+        is_active: 'false'
+      }).then(() => {
+        this.props.history.push("/coach/clients");
+      })
+    }
+    this.setState({open: false});
   }
 
   get clientId() {
     return this.props.match.params.id;
   }
 
-
   render() {
     const isActive = this.state.data.is_active;
-    const isPending = this.state.data.is_pending;
+    const actions = [
+      <FlatButton
+        label="Anuluj"
+        onClick={this.handleClose}
+        styles={styles.flatbtn}
+      />,
+      <FlatButton
+        label="Tak"
+        onClick={this.onHandleClick}
+        styles={styles.flatbtn}
+      />,
+    ];
     return (
       <Page>
         <div className='client-info-wrapper'>
           <div>
           <div className='client-info'>
             <div className='usr-picture'>
-              <img src='../../../assets/images/avatar.png' />
+              <img src={avatarImg} />
             </div>
             <div>
               <p>{this.state.data.name} {this.state.data.last_name}</p>
               <p>{this.state.data.mail_address}</p>
-              <div>
-                {isActive ? (
-                  <RaisedButton onClick={this.onHandleClickF} label='Blokuj' />
-                ) : (
-                  <RaisedButton onClick={this.onHandleClickT} label='Odblokuj' />
-                )}
-
-              </div>
+              {isActive ?
+                <div>
+                  <RaisedButton label="Blokuj" onClick={this.handleOpen} />
+                  <Dialog
+                    title="Blokowanie klienta"
+                    actions={actions}
+                    modal={false}
+                    open={this.state.open}
+                    onRequestClose={this.handleClose}
+                    contentStyle={styles.dialog}
+                  >
+                    Czy na pewno chcesz zablokować tego klienta?
+                  </Dialog>
+                </div>
+                :
+                <div>
+                  <RaisedButton label="Odblokuj" onClick={this.handleOpen} />
+                  <Dialog
+                    title="Odblokowanie klienta"
+                    actions={actions}
+                    modal={false}
+                    open={this.state.open}
+                    onRequestClose={this.handleClose}
+                    contentStyle={styles.dialog}
+                  >
+                    Czy na pewno chcesz odblokować tego klienta?
+                  </Dialog>
+              </div>}
             </div>
           </div>
           </div>
